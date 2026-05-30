@@ -1,19 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { X } from "lucide-react";
 
 interface VideoModalProps {
-  src: string;
-  title?: string;
+  youtubeId: string;
+  isShort?: boolean;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function VideoModal({ src, title, isOpen, onClose }: VideoModalProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Close on Escape, lock body scroll while open
+export function VideoModal({ youtubeId, isShort = false, isOpen, onClose }: VideoModalProps) {
+  // Lock body scroll + Esc to close
   useEffect(() => {
     if (!isOpen) return;
 
@@ -25,41 +23,32 @@ export function VideoModal({ src, title, isOpen, onClose }: VideoModalProps) {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Autoplay with sound when modal opens
-    const v = videoRef.current;
-    if (v) {
-      v.currentTime = 0;
-      v.muted = false;
-      v.volume = 0.85;
-      v.play().catch(() => {
-        // If browser blocks autoplay with sound, fall back to muted
-        v.muted = true;
-        v.play().catch(() => {});
-      });
-    }
-
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
-      if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !youtubeId) return null;
+
+  // YouTube embed with autoplay + sound on. rel=0 hides related videos, modestbranding=1 minimizes YT logo
+  const embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+
+  // Shorts are 9:16 vertical, regular videos are 16:9 horizontal
+  const containerStyle = isShort
+    ? { width: "min(95vw, calc(88vh * 9 / 16))", aspectRatio: "9 / 16" }
+    : { width: "min(95vw, 1600px)", aspectRatio: "16 / 9", maxHeight: "88vh" };
 
   return (
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={title ?? "Video player"}
+      aria-label="Video player"
       onClick={onClose}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/85 backdrop-blur-sm cursor-pointer"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-sm cursor-pointer"
       style={{ animation: "modalFadeIn 220ms ease-out" }}
     >
-      {/* Close button – top right of viewport */}
+      {/* Close button */}
       <button
         onClick={(e) => { e.stopPropagation(); onClose(); }}
         aria-label="Đóng video"
@@ -70,32 +59,21 @@ export function VideoModal({ src, title, isOpen, onClose }: VideoModalProps) {
 
       {/* Video container – clicks here do NOT close */}
       <div
-        className="relative z-10 cursor-default flex flex-col items-center"
+        className="relative z-10 cursor-default"
         style={{
-          width: "min(95vw, 1600px)",
+          ...containerStyle,
           animation: "videoScaleIn 320ms cubic-bezier(0.16, 1, 0.3, 1)",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <video
-          ref={videoRef}
-          src={src}
-          controls
-          autoPlay
-          playsInline
-          className="bg-black shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
-          style={{
-            width: "100%",
-            maxHeight: "88vh",
-            objectFit: "contain",
-          }}
+        <iframe
+          src={embedUrl}
+          title="Video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          className="w-full h-full bg-black shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
+          style={{ border: 0 }}
         />
-
-        {title && (
-          <p className="font-[family-name:var(--font-heading)] text-white/90 italic text-lg md:text-xl mt-5 text-center">
-            {title}
-          </p>
-        )}
       </div>
 
       <style>{`

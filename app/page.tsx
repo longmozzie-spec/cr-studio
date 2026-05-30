@@ -609,114 +609,69 @@ function Services() {
 }
 
 // ─── PORTFOLIO ────────────────────────────────────────────────────────────────
-const portfolioItems = Array.from({ length: 12 }, (_, i) => {
-  const n = i + 1;
-  return {
-    title: `Map Animation #${String(n).padStart(2, "0")}`,
-    location: "Dự án BĐS",
-    src: `/videos/video-${n}.mp4`,
-    thumb: `/thumbnails/video-${n}.jpg`,
-  };
-});
+type PortfolioItem = {
+  title: string;
+  youtubeId: string;
+  isShort: boolean;
+  thumb: string;
+};
+
+const portfolioItems: PortfolioItem[] = [
+  { title: "Map Animation #01", youtubeId: "77CQXX-ZTNQ", isShort: true,  thumb: "/thumbnails/video-1.jpg" },
+  { title: "Map Animation #02", youtubeId: "BxniSqFvpKQ", isShort: true,  thumb: "/thumbnails/video-2.jpg" },
+  { title: "Map Animation #03", youtubeId: "meNnvUXy2F8", isShort: true,  thumb: "/thumbnails/video-3.jpg" },
+  { title: "Map Animation #04", youtubeId: "3ZIpQbujy44", isShort: true,  thumb: "/thumbnails/video-4.jpg" },
+  { title: "Map Animation #05", youtubeId: "ifqO5QXeKBU", isShort: true,  thumb: "/thumbnails/video-5.jpg" },
+  { title: "Map Animation #06", youtubeId: "lrf6TIDmzPo", isShort: true,  thumb: "/thumbnails/video-6.jpg" },
+  { title: "Map Animation #07", youtubeId: "17G9-Z-qQlE", isShort: false, thumb: "/thumbnails/video-7.jpg" },
+  { title: "Map Animation #08", youtubeId: "CaENhAwujMo", isShort: false, thumb: "/thumbnails/video-8.jpg" },
+  { title: "Map Animation #09", youtubeId: "P7zpFiaqAx8", isShort: true,  thumb: "/thumbnails/video-9.jpg" },
+  { title: "Map Animation #10", youtubeId: "wzojIsq69OY", isShort: false, thumb: "/thumbnails/video-10.jpg" },
+  { title: "Map Animation #11", youtubeId: "2onRSfng1jA", isShort: false, thumb: "/thumbnails/video-11.jpg" },
+  { title: "Map Animation #12", youtubeId: "_cdwp7gElRk", isShort: false, thumb: "/thumbnails/video-12.jpg" },
+];
 
 function PortfolioCard({
   item,
   onOpen,
 }: {
-  item: typeof portfolioItems[0];
+  item: PortfolioItem;
   onOpen: () => void;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [inView, setInView] = useState(false);
-
-  // Only mount video src when card is near viewport
-  useEffect(() => {
-    if (!cardRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(cardRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const handleMouseEnter = () => {
-    videoRef.current?.play().catch(() => {});
-  };
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-  const handleClick = () => {
-    // Pause preview before opening modal
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-    onOpen();
-  };
-
   return (
     <div
-      ref={cardRef}
       role="button"
       tabIndex={0}
       aria-label={`Phát video: ${item.title}`}
-      onClick={handleClick}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}
+      onClick={onOpen}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onOpen(); } }}
       className="group glass-card rounded-2xl overflow-hidden cursor-pointer hover:border-[#D4A853]/50 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A853]"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <div className="aspect-video bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-        {/* Thumbnail always shown for instant paint */}
         <img
           src={item.thumb}
           alt={item.title}
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        {/* Video lazy-mounted when near viewport */}
-        {inView && (
-          <video
-            ref={videoRef}
-            src={item.src}
-            poster={item.thumb}
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
-        )}
 
         {/* Overlay gradient for readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30 group-hover:from-black/50 transition-all duration-300 pointer-events-none" />
 
-        {/* Tag top-left */}
-        {/* Play icon center */}
+        {/* Play button – grows + gold fill on hover */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm border-2 border-[#D4A853]/60 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-            <Play size={20} className="text-[#D4A853] ml-1" fill="#D4A853" />
+          <div className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm border-2 border-[#D4A853]/70 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-[#D4A853] group-hover:border-[#D4A853]">
+            <Play size={22} className="text-[#D4A853] ml-1 transition-colors duration-300 group-hover:text-black" fill="currentColor" />
           </div>
         </div>
-
       </div>
     </div>
   );
 }
 
 function Portfolio() {
-  const [activeVideo, setActiveVideo] = useState<typeof portfolioItems[0] | null>(null);
+  const [activeVideo, setActiveVideo] = useState<PortfolioItem | null>(null);
 
   return (
     <section id="portfolio" aria-labelledby="portfolio-heading" className="py-32 px-6 relative">
@@ -739,8 +694,9 @@ function Portfolio() {
 
       {/* Single modal – switching to a new video auto-closes the old one */}
       <VideoModal
-        key={activeVideo?.src}
-        src={activeVideo?.src ?? ""}
+        key={activeVideo?.youtubeId}
+        youtubeId={activeVideo?.youtubeId ?? ""}
+        isShort={activeVideo?.isShort ?? false}
         isOpen={activeVideo !== null}
         onClose={() => setActiveVideo(null)}
       />
