@@ -264,8 +264,8 @@ const team: TeamMember[] = [
     name: "Dương Minh Thơ",
     role: "Founder · CR Studio",
     avatar: "/avatar.png",
-    headingLine1: "Một Thập Kỷ Phía Sau Bàn Dựng",
-    headingLine2: "Nghệ Thuật Kể Chuyện Không Gian",
+    headingLine1: "Nghệ Thuật Kể Chuyện",
+    headingLine2: "Bằng Không Gian",
     tagline: "10 Năm Bảo Chứng Chất Lượng Cho Phim Bất Động Sản",
     bio: (
       <>
@@ -374,8 +374,8 @@ const team: TeamMember[] = [
     name: "Nguyễn Nhật Quang",
     role: "Video Editor · CR Studio",
     avatar: "/team-07.png",
-    headingLine1: "Bứt Phá Thị Giác",
-    headingLine2: "Giữa Lòng Kiến Trúc",
+    headingLine1: "Tạo Điểm Nhấn Cho Video",
+    headingLine2: "Là Công Việc Của Tôi",
     tagline: "Tạo Điểm Nhấn Cho Video · 2 Năm Hậu Kỳ Bất Động Sản",
     bio: (
       <>
@@ -504,7 +504,7 @@ function About() {
               id="about-heading"
               className="font-[family-name:var(--font-heading)] text-white mb-3 whitespace-nowrap overflow-visible"
               style={{
-                fontSize: "clamp(1.25rem, 4vw, 2.5rem)",
+                fontSize: "clamp(1.4rem, 4.5vw, 2.75rem)",
                 fontWeight: 600,
                 lineHeight: 1.25,
                 paddingBottom: "0.1em",
