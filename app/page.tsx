@@ -492,7 +492,7 @@ function About() {
               <span className="text-gold-gradient">{member.headingLine2}</span>
             </h2>
 
-            <p className="font-[family-name:var(--font-sub)] text-white/70 text-sm md:text-base uppercase tracking-[0.2em] mb-8 font-medium">
+            <p className="font-[family-name:var(--font-sub)] text-white/70 text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.15em] mb-8 font-medium whitespace-normal md:whitespace-nowrap">
               {member.tagline}
             </p>
 
