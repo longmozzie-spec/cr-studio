@@ -264,12 +264,12 @@ const team: TeamMember[] = [
     name: "Dương Minh Thơ",
     role: "Founder · CR Studio",
     avatar: "/avatar.png",
-    headingLine1: "Nghệ Thuật Kể Chuyện",
-    headingLine2: "Không Gian",
+    headingLine1: "Một Thập Kỷ Phía Sau Bàn Dựng",
+    headingLine2: "Nghệ Thuật Kể Chuyện Không Gian",
     tagline: "10 Năm Bảo Chứng Chất Lượng Cho Phim Bất Động Sản",
     bio: (
       <>
-        Với <span className="text-[#D4A853] font-semibold">10 năm kinh nghiệm thực chiến</span>, tôi chuyên kiến tạo các sản phẩm video chất lượng cao dành riêng cho lĩnh vực Bất động sản — từ video review thực tế, giới thiệu dự án quy mô đến các thước phim cinematic kiến trúc. Sở hữu tư duy duy mỹ cùng khả năng làm chủ các công nghệ hậu kỳ hiện đại, tôi tự tin biến mọi tư liệu hình ảnh thành một <span className="text-white font-medium">công cụ bán hàng mạnh mẽ</span>, giúp nâng cao giá trị sản phẩm và khẳng định đẳng cấp cho thương hiệu của bạn.
+        Trong thế giới của một Video Editor lão luyện, mỗi công trình kiến trúc không đơn thuần là những khối bê tông vô cảm, mà là một <span className="text-white font-medium">thực thể sống</span> sở hữu những câu chuyện và ngôn ngữ của riêng nó. Trải qua <span className="text-[#D4A853] font-semibold">hơn 10 năm hành trình dấn thân trong ngành hậu kỳ</span>, tôi đã nâng tầm việc cắt dựng phim thành <span className="text-white font-medium italic">"Nghệ thuật kể chuyện không gian"</span>. Một thập kỷ thực chiến giúp tôi thấu hiểu sâu sắc cách điều phối nhịp điệu để tôn vinh những đường nét thiết kế, cách gọt giũa ánh sáng để khơi dậy sự sang trọng và cách dùng ngôn ngữ điện ảnh để lột tả cái hồn của một tổ ấm hay một dự án tầm cỡ. Đối với tôi, dựng phim bất động sản là quá trình kết nối xúc cảm — biến những góc máy thô thành một <span className="text-[#D4A853] font-semibold">trải nghiệm thị giác xa hoa</span>, nơi khách hàng thượng lưu có thể cảm nhận được phong cách sống đẳng cấp ngay từ cái nhìn đầu tiên. Tôi không chỉ tạo ra những thước phim mượt mà, tôi kiến tạo những <span className="text-[#D4A853] font-semibold">tuyệt tác truyền thông</span> giúp nâng tầm giá trị và khẳng định vị thế độc bản cho mọi công trình của bạn.
       </>
     ),
     stats: [
@@ -486,7 +486,7 @@ function About() {
               id="about-heading"
               className="font-[family-name:var(--font-heading)] text-white mb-3 whitespace-nowrap overflow-visible"
               style={{
-                fontSize: "clamp(1.5rem, 5vw, 3rem)",
+                fontSize: "clamp(1.25rem, 4vw, 2.5rem)",
                 fontWeight: 600,
                 lineHeight: 1.25,
                 paddingBottom: "0.1em",
