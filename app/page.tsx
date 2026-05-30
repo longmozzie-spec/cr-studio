@@ -484,7 +484,7 @@ function About() {
           <div className="relative">
             <h2
               id="about-heading"
-              className="font-[family-name:var(--font-heading)] text-4xl md:text-5xl lg:text-6xl text-white mb-3"
+              className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl md:text-5xl text-white mb-3 whitespace-normal md:whitespace-nowrap overflow-visible"
               style={{ fontWeight: 600, lineHeight: 1.25, paddingBottom: "0.1em" }}
             >
               {member.headingLine1}
