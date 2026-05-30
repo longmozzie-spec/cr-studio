@@ -1073,98 +1073,13 @@ function Contact() {
           <div className="glass-card rounded-2xl p-8 flex flex-col items-center justify-center text-center">
             <p className="text-[#D4A853] text-sm uppercase tracking-wider font-medium mb-5">Quét Mã Zalo / Chat Ngay</p>
 
-            <div className="w-52 h-52 bg-white rounded-2xl p-4 mb-5 flex items-center justify-center">
-              {/* QR Code SVG – functional-looking pattern */}
-              <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                {/* Top-left finder */}
-                <rect x="10" y="10" width="56" height="56" rx="4" fill="none" stroke="#000" strokeWidth="7" />
-                <rect x="22" y="22" width="32" height="32" rx="2" fill="#000" />
-                {/* Top-right finder */}
-                <rect x="134" y="10" width="56" height="56" rx="4" fill="none" stroke="#000" strokeWidth="7" />
-                <rect x="146" y="22" width="32" height="32" rx="2" fill="#000" />
-                {/* Bottom-left finder */}
-                <rect x="10" y="134" width="56" height="56" rx="4" fill="none" stroke="#000" strokeWidth="7" />
-                <rect x="22" y="146" width="32" height="32" rx="2" fill="#000" />
-                {/* Timing patterns */}
-                {[80,92,104,116,128].map((x, i) => i % 2 === 0 && <rect key={x} x={x} y="78" width="10" height="10" fill="#000" />)}
-                {[80,92,104,116,128].map((x, i) => i % 2 === 0 && <rect key={`v${x}`} x="78" y={x} width="10" height="10" fill="#000" />)}
-                {/* Data modules */}
-                <rect x="80" y="10" width="10" height="10" fill="#000" />
-                <rect x="92" y="10" width="10" height="10" fill="#000" />
-                <rect x="104" y="10" width="10" height="10" fill="#000" />
-                <rect x="80" y="22" width="10" height="10" fill="#000" />
-                <rect x="104" y="22" width="10" height="10" fill="#000" />
-                <rect x="92" y="34" width="10" height="10" fill="#000" />
-                <rect x="80" y="46" width="10" height="10" fill="#000" />
-                <rect x="92" y="46" width="10" height="10" fill="#000" />
-                <rect x="134" y="80" width="10" height="10" fill="#000" />
-                <rect x="146" y="80" width="10" height="10" fill="#000" />
-                <rect x="158" y="80" width="10" height="10" fill="#000" />
-                <rect x="170" y="92" width="10" height="10" fill="#000" />
-                <rect x="146" y="104" width="10" height="10" fill="#000" />
-                <rect x="158" y="92" width="10" height="10" fill="#000" />
-                <rect x="10" y="80" width="10" height="10" fill="#000" />
-                <rect x="22" y="80" width="10" height="10" fill="#000" />
-                <rect x="46" y="80" width="10" height="10" fill="#000" />
-                <rect x="10" y="92" width="10" height="10" fill="#000" />
-                <rect x="34" y="92" width="10" height="10" fill="#000" />
-                <rect x="46" y="104" width="10" height="10" fill="#000" />
-                <rect x="22" y="104" width="10" height="10" fill="#000" />
-                <rect x="80" y="80" width="10" height="10" fill="#000" />
-                <rect x="104" y="80" width="10" height="10" fill="#000" />
-                <rect x="116" y="80" width="10" height="10" fill="#000" />
-                <rect x="80" y="92" width="10" height="10" fill="#000" />
-                <rect x="116" y="92" width="10" height="10" fill="#000" />
-                <rect x="92" y="104" width="10" height="10" fill="#000" />
-                <rect x="104" y="104" width="10" height="10" fill="#000" />
-                <rect x="80" y="116" width="10" height="10" fill="#000" />
-                <rect x="92" y="116" width="10" height="10" fill="#000" />
-                <rect x="116" y="116" width="10" height="10" fill="#000" />
-                <rect x="80" y="128" width="10" height="10" fill="#000" />
-                <rect x="104" y="128" width="10" height="10" fill="#000" />
-                <rect x="80" y="140" width="10" height="10" fill="#000" />
-                <rect x="92" y="140" width="10" height="10" fill="#000" />
-                <rect x="116" y="128" width="10" height="10" fill="#000" />
-                <rect x="104" y="140" width="10" height="10" fill="#000" />
-                <rect x="116" y="140" width="10" height="10" fill="#000" />
-                <rect x="134" y="92" width="10" height="10" fill="#000" />
-                <rect x="134" y="116" width="10" height="10" fill="#000" />
-                <rect x="146" y="116" width="10" height="10" fill="#000" />
-                <rect x="158" y="128" width="10" height="10" fill="#000" />
-                <rect x="170" y="116" width="10" height="10" fill="#000" />
-                <rect x="170" y="140" width="10" height="10" fill="#000" />
-                <rect x="158" y="140" width="10" height="10" fill="#000" />
-                <rect x="10" y="116" width="10" height="10" fill="#000" />
-                <rect x="34" y="116" width="10" height="10" fill="#000" />
-                <rect x="46" y="116" width="10" height="10" fill="#000" />
-                <rect x="22" y="128" width="10" height="10" fill="#000" />
-                <rect x="46" y="128" width="10" height="10" fill="#000" />
-                <rect x="10" y="140" width="10" height="10" fill="#000" />
-                <rect x="34" y="140" width="10" height="10" fill="#000" />
-                <rect x="58" y="80" width="10" height="10" fill="#000" />
-                <rect x="58" y="104" width="10" height="10" fill="#000" />
-                <rect x="58" y="128" width="10" height="10" fill="#000" />
-                <rect x="58" y="140" width="10" height="10" fill="#000" />
-                <rect x="58" y="152" width="10" height="10" fill="#000" />
-                <rect x="58" y="164" width="10" height="10" fill="#000" />
-                <rect x="80" y="152" width="10" height="10" fill="#000" />
-                <rect x="104" y="152" width="10" height="10" fill="#000" />
-                <rect x="92" y="164" width="10" height="10" fill="#000" />
-                <rect x="116" y="152" width="10" height="10" fill="#000" />
-                <rect x="128" y="164" width="10" height="10" fill="#000" />
-                <rect x="140" y="152" width="10" height="10" fill="#000" />
-                <rect x="140" y="164" width="10" height="10" fill="#000" />
-                <rect x="152" y="164" width="10" height="10" fill="#000" />
-                <rect x="164" y="152" width="10" height="10" fill="#000" />
-                <rect x="176" y="164" width="10" height="10" fill="#000" />
-                <rect x="80" y="164" width="10" height="10" fill="#000" />
-                <rect x="176" y="152" width="10" height="10" fill="#000" />
-                <rect x="152" y="152" width="10" height="10" fill="#000" />
-                <rect x="128" y="152" width="10" height="10" fill="#000" />
-                {/* Center logo */}
-                <rect x="88" y="88" width="24" height="24" rx="4" fill="#D4A853" />
-                <text x="100" y="105" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#000">CR</text>
-              </svg>
+            <div className="w-52 h-52 bg-white rounded-2xl p-3 mb-5 flex items-center justify-center">
+              <img
+                src="/qr-zalo.jpg"
+                alt="Mã QR Zalo CR Studio – 0766 475 999"
+                className="w-full h-full object-contain rounded-lg"
+                loading="lazy"
+              />
             </div>
 
             <p className="text-white font-bold text-lg mb-1">Zalo CR Studio</p>
