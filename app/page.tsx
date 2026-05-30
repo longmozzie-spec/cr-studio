@@ -130,7 +130,7 @@ function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-20 text-center">
 
-        <h1 className="font-[family-name:var(--font-heading)] text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8" style={{ lineHeight: "1.15" }}>
+        <h1 className="font-[family-name:var(--font-heading)] font-black mb-8" style={{ fontSize: "clamp(2.25rem, 7vw, 6rem)", lineHeight: "1.15" }}>
           <span className="text-white block">Dựng Video</span>
           <span className="shimmer-text block">Bất Động Sản</span>
           <span className="text-white block">Đỉnh Cao</span>
@@ -484,15 +484,24 @@ function About() {
           <div className="relative">
             <h2
               id="about-heading"
-              className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl md:text-5xl text-white mb-3 whitespace-normal md:whitespace-nowrap overflow-visible"
-              style={{ fontWeight: 600, lineHeight: 1.25, paddingBottom: "0.1em" }}
+              className="font-[family-name:var(--font-heading)] text-white mb-3 whitespace-nowrap overflow-visible"
+              style={{
+                fontSize: "clamp(1.5rem, 5vw, 3rem)",
+                fontWeight: 600,
+                lineHeight: 1.25,
+                paddingBottom: "0.1em",
+              }}
             >
               {member.headingLine1}
               <br />
               <span className="text-gold-gradient">{member.headingLine2}</span>
             </h2>
 
-            <p className="font-[family-name:var(--font-sub)] text-white/70 text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.15em] mb-8 font-medium whitespace-normal md:whitespace-nowrap">
+            <p className="font-[family-name:var(--font-sub)] text-white/70 uppercase font-medium whitespace-nowrap mb-8"
+               style={{
+                 fontSize: "clamp(8.5px, 2.4vw, 14px)",
+                 letterSpacing: "clamp(0.02em, 0.4vw, 0.15em)",
+               }}>
               {member.tagline}
             </p>
 
