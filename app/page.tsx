@@ -371,7 +371,7 @@ const team: TeamMember[] = [
     ],
   },
   {
-    name: "Nguyễn Nhật Quang",
+    name: "Quang Nguyễn",
     role: "Video Editor · CR Studio",
     avatar: "/team-07.png",
     headingLine1: "Tạo Điểm Nhấn Cho Video",
