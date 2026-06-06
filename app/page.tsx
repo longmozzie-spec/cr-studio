@@ -279,6 +279,24 @@ const team: TeamMember[] = [
     ],
   },
   {
+    name: "Nguyễn Trung Hổ",
+    role: "Video Editor · CR Studio",
+    avatar: "/team-2.png",
+    headingLine1: "Khi Sự Hoàn Hảo",
+    headingLine2: "Là Châm Ngôn Sống",
+    tagline: "2 Năm Kiến Tạo Tuyệt Tác Thị Giác Cho Phim Bất Động Sản",
+    bio: (
+      <>
+        Với tôi, một video bất động sản thành công không bao giờ có chỗ cho những khung hình nửa vời. Trải qua <span className="text-[#D4A853] font-semibold">2 năm hành trình trong thế giới hậu kỳ</span>, tôi hiểu rằng mỗi milimet góc máy, mỗi điểm chuyển sáng và từng nhịp nhạc được đặt chuẩn xác chính là chìa khóa để nâng tầm giá trị của một công trình. <span className="text-white font-medium italic">"Hoàn hảo chính là châm ngôn của tôi."</span> Sự cầu toàn đó thúc ép tôi phải tỉ mỉ trong từng chi tiết: từ việc gọt giũa những chuyển động mượt mà để tôn vinh nét kiến trúc, đến việc cân chỉnh màu sắc sao cho lột tả được sự sang trọng, đẳng cấp nhất của không gian. Tôi không chỉ dựng phim, tôi kiến tạo những <span className="text-[#D4A853] font-semibold">tuyệt tác thị giác</span> giúp sản phẩm bất động sản của bạn chạm đến trái tim của những khách hàng thượng lưu khó tính nhất.
+      </>
+    ),
+    stats: [
+      { num: "2", suffix: "Năm+", label: "Kinh nghiệm" },
+      { num: "50", suffix: "+", label: "Dự án" },
+      { num: "100", suffix: "%", label: "Tâm huyết" },
+    ],
+  },
+  {
     name: "Lê Hải Long",
     role: "Video Editor · CR Studio",
     avatar: "/team-3.png",
@@ -350,6 +368,24 @@ const team: TeamMember[] = [
       { num: "5", suffix: "Năm+", label: "Kinh nghiệm" },
       { num: "100", suffix: "+", label: "Sản phẩm" },
       { num: "★", suffix: "", label: "Hợp tác ca sĩ · rapper" },
+    ],
+  },
+  {
+    name: "Quang Nguyễn",
+    role: "Video Editor · CR Studio",
+    avatar: "/team-07.png",
+    headingLine1: "Tạo Điểm Nhấn Cho Video",
+    headingLine2: "Là Công Việc Của Tôi",
+    tagline: "Tạo Điểm Nhấn Cho Video · 2 Năm Hậu Kỳ Bất Động Sản",
+    bio: (
+      <>
+        Giữa hàng ngàn nội dung bất động sản xuất hiện mỗi ngày trên mạng xã hội, một video mờ nhạt đồng nghĩa với việc đánh mất cơ hội tiếp cận khách hàng tiềm năng. Với <span className="text-[#D4A853] font-semibold">2 năm kinh nghiệm thực chiến trong lĩnh vực hậu kỳ</span>, tôi hiểu rằng sự khác biệt nằm ở những khoảnh khắc đắt giá. Châm ngôn làm việc của tôi rất rõ ràng: <span className="text-white font-medium italic">"Tạo điểm nhấn cho video là công việc của tôi."</span> Đối với tôi, dựng phim bất động sản không chỉ là xếp các phân cảnh theo thứ tự, mà là <span className="text-[#D4A853] font-semibold">nghệ thuật dẫn dắt ánh nhìn</span>. Bằng kỹ thuật speed-ramp mượt mà, những cú chuyển cảnh tinh tế và tư duy chọn nhạc nhạy bén, tôi luôn biết cách làm nổi bật những <span className="text-white font-medium">"gợi cảm"</span> nhất của một công trình — từ một góc ban công lộng gió, khoảng hoàng hôn buông xuống hồ bơi, cho đến sự xa hoa của phòng khách. Sự nhạy bén của 2 năm va chạm thực tế giúp tôi biến những tư liệu thô thành một <span className="text-[#D4A853] font-semibold">sản phẩm có nhịp điệu cuốn hút</span>, giữ chân người xem đến giây cuối cùng và nâng tầm đẳng cấp cho dự án của bạn.
+      </>
+    ),
+    stats: [
+      { num: "2", suffix: "Năm", label: "Kinh nghiệm" },
+      { num: "40", suffix: "+", label: "Sản phẩm" },
+      { num: "100", suffix: "%", label: "Đúng hạn" },
     ],
   },
 ];
