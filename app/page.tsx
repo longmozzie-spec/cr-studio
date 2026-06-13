@@ -625,7 +625,21 @@ type PortfolioItem = {
   thumb: string;
 };
 
-const portfolioItems: PortfolioItem[] = [];
+const portfolioItems: PortfolioItem[] = [
+  { title: "Bên Trong Penthouse 170 Tỷ – Dinh Thự Trên Không The Opera Thủ Thiêm",  youtubeId: "5CEuUzsYEzQ", isShort: false, thumb: "https://i.ytimg.com/vi/5CEuUzsYEzQ/maxresdefault.jpg" },
+  { title: "Chạm Tay Vào Giấc Mơ Thượng Lưu Tại Loft House – Opera Thủ Thiêm",     youtubeId: "fsb9ifLCUDw", isShort: false, thumb: "https://i.ytimg.com/vi/fsb9ifLCUDw/maxresdefault.jpg" },
+  { title: "The Crest Residence – Picturesque Beauty Of Thủ Thiêm",                youtubeId: "UCFzNSiJdys", isShort: false, thumb: "https://i.ytimg.com/vi/UCFzNSiJdys/maxresdefault.jpg" },
+  { title: "Thành Phố Điện Ảnh Đầu Tiên Đông Nam Á – Căn Hộ 4PN The Galleria",     youtubeId: "e8_HAZdBQP8", isShort: false, thumb: "https://i.ytimg.com/vi/e8_HAZdBQP8/maxresdefault.jpg" },
+  { title: "Khám Phá Tiện Ích Đẳng Cấp Tại Grand Marina Sài Gòn",                  youtubeId: "Uusk5XVzXAI", isShort: false, thumb: "https://i.ytimg.com/vi/Uusk5XVzXAI/maxresdefault.jpg" },
+  { title: "Căn Hộ Triệu Đô – Cuộc Sống Trong Mơ Tại Grand Marina Sài Gòn",        youtubeId: "cBYOQaPYnq0", isShort: false, thumb: "https://i.ytimg.com/vi/cBYOQaPYnq0/maxresdefault.jpg" },
+  { title: "Zeit River Thủ Thiêm – Khám Phá View Sài Gòn Cùng Trinh Lee",          youtubeId: "DsoCBasY9yI", isShort: false, thumb: "https://i.ytimg.com/vi/DsoCBasY9yI/maxresdefault.jpg" },
+  { title: "Duplex The River Thủ Thiêm – Resort Giữa Trung Tâm Sài Gòn",           youtubeId: "UlBtrIz31vg", isShort: false, thumb: "https://i.ytimg.com/vi/UlBtrIz31vg/maxresdefault.jpg" },
+  { title: "Opera Thủ Thiêm – Căn Hộ 4 Phòng Ngủ View Sông Sài Gòn",               youtubeId: "AhokN5S8VNc", isShort: false, thumb: "https://i.ytimg.com/vi/AhokN5S8VNc/maxresdefault.jpg" },
+  { title: "Loft House Nội Thất Indochine Tại Opera Residence – Metropole",        youtubeId: "imCOxBGLyN8", isShort: false, thumb: "https://i.ytimg.com/vi/imCOxBGLyN8/maxresdefault.jpg" },
+  { title: "Căn Hộ Sân Vườn Full Nội Thất Tại The River Thủ Thiêm – Kevin Khánh",  youtubeId: "bmYne_u1Snc", isShort: false, thumb: "https://i.ytimg.com/vi/bmYne_u1Snc/maxresdefault.jpg" },
+  { title: "55 Tỷ Cho Căn Lofthouse Nội Thất Chỉnh Chu Tại Metropole Thủ Thiêm",   youtubeId: "yQNlUBiJ-JY", isShort: false, thumb: "https://i.ytimg.com/vi/yQNlUBiJ-JY/maxresdefault.jpg" },
+  { title: "Căn Hộ 4 Phòng Ngủ Opera Residence – Metropole Thủ Thiêm",             youtubeId: "YiC-B-9oA7k", isShort: false, thumb: "https://i.ytimg.com/vi/YiC-B-9oA7k/maxresdefault.jpg" },
+];
 
 function PortfolioCard({
   item,
