@@ -370,24 +370,6 @@ const team: TeamMember[] = [
       { num: "★", suffix: "", label: "Hợp tác ca sĩ · rapper" },
     ],
   },
-  {
-    name: "Quang Nguyễn",
-    role: "Video Editor · CR Studio",
-    avatar: "/team-07.png",
-    headingLine1: "Tạo Điểm Nhấn Cho Video",
-    headingLine2: "Là Công Việc Của Tôi",
-    tagline: "Tạo Điểm Nhấn Cho Video · 2 Năm Hậu Kỳ Bất Động Sản",
-    bio: (
-      <>
-        Giữa hàng ngàn nội dung bất động sản xuất hiện mỗi ngày trên mạng xã hội, một video mờ nhạt đồng nghĩa với việc đánh mất cơ hội tiếp cận khách hàng tiềm năng. Với <span className="text-[#D4A853] font-semibold">2 năm kinh nghiệm thực chiến trong lĩnh vực hậu kỳ</span>, tôi hiểu rằng sự khác biệt nằm ở những khoảnh khắc đắt giá. Châm ngôn làm việc của tôi rất rõ ràng: <span className="text-white font-medium italic">"Tạo điểm nhấn cho video là công việc của tôi."</span> Đối với tôi, dựng phim bất động sản không chỉ là xếp các phân cảnh theo thứ tự, mà là <span className="text-[#D4A853] font-semibold">nghệ thuật dẫn dắt ánh nhìn</span>. Bằng kỹ thuật speed-ramp mượt mà, những cú chuyển cảnh tinh tế và tư duy chọn nhạc nhạy bén, tôi luôn biết cách làm nổi bật những <span className="text-white font-medium">"gợi cảm"</span> nhất của một công trình — từ một góc ban công lộng gió, khoảng hoàng hôn buông xuống hồ bơi, cho đến sự xa hoa của phòng khách. Sự nhạy bén của 2 năm va chạm thực tế giúp tôi biến những tư liệu thô thành một <span className="text-[#D4A853] font-semibold">sản phẩm có nhịp điệu cuốn hút</span>, giữ chân người xem đến giây cuối cùng và nâng tầm đẳng cấp cho dự án của bạn.
-      </>
-    ),
-    stats: [
-      { num: "2", suffix: "Năm", label: "Kinh nghiệm" },
-      { num: "40", suffix: "+", label: "Sản phẩm" },
-      { num: "100", suffix: "%", label: "Đúng hạn" },
-    ],
-  },
 ];
 
 function About() {
@@ -643,20 +625,7 @@ type PortfolioItem = {
   thumb: string;
 };
 
-const portfolioItems: PortfolioItem[] = [
-  { title: "Map Animation #01", youtubeId: "77CQXX-ZTNQ", isShort: true,  thumb: "/thumbnails/video-1.jpg" },
-  { title: "Map Animation #02", youtubeId: "BxniSqFvpKQ", isShort: true,  thumb: "/thumbnails/video-2.jpg" },
-  { title: "Map Animation #03", youtubeId: "meNnvUXy2F8", isShort: true,  thumb: "/thumbnails/video-3.jpg" },
-  { title: "Map Animation #04", youtubeId: "3ZIpQbujy44", isShort: true,  thumb: "/thumbnails/video-4.jpg" },
-  { title: "Map Animation #05", youtubeId: "ifqO5QXeKBU", isShort: true,  thumb: "/thumbnails/video-5.jpg" },
-  { title: "Map Animation #06", youtubeId: "lrf6TIDmzPo", isShort: true,  thumb: "/thumbnails/video-6.jpg" },
-  { title: "Map Animation #07", youtubeId: "17G9-Z-qQlE", isShort: false, thumb: "/thumbnails/video-7.jpg" },
-  { title: "Map Animation #08", youtubeId: "CaENhAwujMo", isShort: false, thumb: "/thumbnails/video-8.jpg" },
-  { title: "Map Animation #09", youtubeId: "P7zpFiaqAx8", isShort: true,  thumb: "/thumbnails/video-9.jpg" },
-  { title: "Map Animation #10", youtubeId: "wzojIsq69OY", isShort: false, thumb: "/thumbnails/video-10.jpg" },
-  { title: "Map Animation #11", youtubeId: "2onRSfng1jA", isShort: false, thumb: "/thumbnails/video-11.jpg" },
-  { title: "Map Animation #12", youtubeId: "_cdwp7gElRk", isShort: false, thumb: "/thumbnails/video-12.jpg" },
-];
+const portfolioItems: PortfolioItem[] = [];
 
 function PortfolioCard({
   item,
@@ -710,13 +679,33 @@ function Portfolio() {
           title={<>Một Số Dự Án <span className="text-gold-gradient">Bất Động Sản</span></>}
           subtitle="Các dự án bất động sản chúng tôi đã thực hiện. Bạn có thể xem và tham khảo trước khi yêu cầu chúng tôi."
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {portfolioItems.map((item, i) => (
-            <Reveal key={i} delay={(i % 3) * 100}>
-              <PortfolioCard item={item} onOpen={() => setActiveVideo(item)} />
-            </Reveal>
-          ))}
-        </div>
+        {portfolioItems.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {portfolioItems.map((item, i) => (
+              <Reveal key={i} delay={(i % 3) * 100}>
+                <PortfolioCard item={item} onOpen={() => setActiveVideo(item)} />
+              </Reveal>
+            ))}
+          </div>
+        ) : (
+          <Reveal>
+            <div className="glass-card rounded-2xl py-20 px-8 text-center">
+              <p className="font-[family-name:var(--font-heading)] text-white/80 text-2xl md:text-3xl mb-3">
+                Đang cập nhật sản phẩm mới
+              </p>
+              <p className="text-gray-400 text-base font-[family-name:var(--font-body)] max-w-md mx-auto">
+                Liên hệ trực tiếp để xem các dự án đã thực hiện gần đây
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 mt-6 bg-[#D4A853] hover:bg-[#F0C870] text-black font-bold px-6 py-3 rounded-full transition-all duration-200 cursor-pointer font-[family-name:var(--font-sub)]"
+              >
+                <Phone size={14} />
+                Liên Hệ Xem Portfolio
+              </a>
+            </div>
+          </Reveal>
+        )}
       </div>
 
       {/* Single modal – switching to a new video auto-closes the old one */}
