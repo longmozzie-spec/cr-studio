@@ -374,6 +374,7 @@ const team: TeamMember[] = [
 
 function About() {
   const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const total = team.length;
   const member = team[index];
 
@@ -390,8 +391,23 @@ function About() {
     return () => window.removeEventListener("keydown", handler);
   }, [total]);
 
+  // Auto-advance – resets countdown on every index change or pause toggle
+  useEffect(() => {
+    if (isPaused || total <= 1) return;
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % total);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, [isPaused, total, index]);
+
   return (
-    <section id="about" aria-labelledby="about-heading" className="relative py-32 px-6 overflow-hidden">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="relative py-32 px-6 overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       {/* Soft gold ambient glow */}
       <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full bg-[#D4A853]/[0.04] blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-[#D4A853]/[0.03] blur-[120px] pointer-events-none" />
@@ -534,10 +550,21 @@ function About() {
                 key={i}
                 onClick={() => setIndex(i)}
                 aria-label={`Chuyển đến thành viên ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  i === index ? "w-10 bg-[#D4A853]" : "w-1.5 bg-[#D4A853]/30 hover:bg-[#D4A853]/60"
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer relative overflow-hidden ${
+                  i === index ? "w-10 bg-[#D4A853]/30" : "w-1.5 bg-[#D4A853]/30 hover:bg-[#D4A853]/60"
                 }`}
-              />
+              >
+                {i === index && !isPaused && (
+                  <span
+                    key={index}
+                    className="absolute inset-y-0 left-0 bg-[#D4A853] rounded-full"
+                    style={{ animation: "dotProgress 7s linear forwards" }}
+                  />
+                )}
+                {i === index && isPaused && (
+                  <span className="absolute inset-y-0 left-0 right-0 bg-[#D4A853] rounded-full" />
+                )}
+              </button>
             ))}
           </div>
         )}
@@ -547,6 +574,10 @@ function About() {
         @keyframes fadeSwap {
           from { opacity: 0; transform: translateY(12px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes dotProgress {
+          from { width: 0%; }
+          to   { width: 100%; }
         }
       `}</style>
     </section>
@@ -1004,7 +1035,7 @@ function Contact() {
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-4">
             <a
-              href="tel:0766475999"
+              href="tel:0945657611"
               className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/50 transition-all duration-300 cursor-pointer group block"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/25 transition-colors">
@@ -1012,12 +1043,12 @@ function Contact() {
               </div>
               <div>
                 <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Điện Thoại / Zalo</p>
-                <p className="text-white font-bold text-xl">0766 475 999</p>
+                <p className="text-white font-bold text-xl">0945 657 611</p>
               </div>
             </a>
 
             <a
-              href="mailto:hello@crstudio.vn"
+              href="mailto:Editornghiepdu93@gmail.com"
               className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/50 transition-all duration-300 cursor-pointer group block"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/25 transition-colors">
@@ -1025,7 +1056,7 @@ function Contact() {
               </div>
               <div>
                 <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Email</p>
-                <p className="text-white font-bold text-xl">hello@crstudio.vn</p>
+                <p className="text-white font-bold text-xl">Editornghiepdu93@gmail.com</p>
               </div>
             </a>
 
@@ -1062,7 +1093,7 @@ function Contact() {
             <div className="w-52 h-52 bg-white rounded-2xl p-3 mb-5 flex items-center justify-center">
               <img
                 src="/qr-zalo.jpg"
-                alt="Mã QR Zalo CR Studio – 0766 475 999"
+                alt="Mã QR Zalo CR Studio – 0945 657 611"
                 className="w-full h-full object-contain rounded-lg"
                 loading="lazy"
               />
@@ -1072,7 +1103,7 @@ function Contact() {
             <p className="text-gray-400 text-sm mb-4">Quét để nhắn tin ngay qua Zalo</p>
             <div className="flex items-center gap-2 bg-[#D4A853]/10 border border-[#D4A853]/30 rounded-full px-5 py-2">
               <Phone size={14} className="text-[#D4A853]" />
-              <span className="text-[#D4A853] font-bold">0766 475 999</span>
+              <span className="text-[#D4A853] font-bold">0945 657 611</span>
             </div>
           </div>
         </div>
@@ -1177,15 +1208,15 @@ function Footer() {
           </h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <a href="tel:0766475999" className="text-gray-400 hover:text-[#D4A853] transition-colors cursor-pointer flex items-center gap-2 font-[family-name:var(--font-body)]">
+              <a href="tel:0945657611" className="text-gray-400 hover:text-[#D4A853] transition-colors cursor-pointer flex items-center gap-2 font-[family-name:var(--font-body)]">
                 <Phone size={14} className="text-[#D4A853] shrink-0" />
-                0766 475 999
+                0945 657 611
               </a>
             </li>
             <li>
-              <a href="mailto:hello@crstudio.vn" className="text-gray-400 hover:text-[#D4A853] transition-colors cursor-pointer flex items-center gap-2 font-[family-name:var(--font-body)]">
+              <a href="mailto:Editornghiepdu93@gmail.com" className="text-gray-400 hover:text-[#D4A853] transition-colors cursor-pointer flex items-center gap-2 font-[family-name:var(--font-body)]">
                 <Mail size={14} className="text-[#D4A853] shrink-0" />
-                hello@crstudio.vn
+                Editornghiepdu93@gmail.com
               </a>
             </li>
             <li>
