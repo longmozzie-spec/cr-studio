@@ -131,9 +131,9 @@ function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-20 text-center">
 
         <h1 className="font-[family-name:var(--font-heading)] font-black mb-8" style={{ fontSize: "clamp(2.25rem, 7vw, 6rem)", lineHeight: "1.15" }}>
-          <span className="text-white block">CR Studio</span>
-          <span className="shimmer-text block">Studio Của Mọi</span>
-          <span className="text-white block">Doanh Nghiệp</span>
+          <span className="text-white block">Mọi Ý Tưởng.</span>
+          <span className="shimmer-text block">Mọi Ngành Nghề.</span>
+          <span className="text-white block">Một Điểm Đến</span>
         </h1>
 
         <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto font-[family-name:var(--font-body)]">
