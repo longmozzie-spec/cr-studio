@@ -272,7 +272,7 @@ const team: TeamMember[] = [
     ),
     stats: [
       { num: "10", suffix: "Năm", label: "Kinh nghiệm" },
-      { num: "200", suffix: "+", label: "Dự án BĐS" },
+      { num: "200", suffix: "+", label: "Dự án" },
       { num: "100", suffix: "%", label: "Tận tâm" },
     ],
   },
