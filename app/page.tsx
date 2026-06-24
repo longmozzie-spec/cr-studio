@@ -105,7 +105,7 @@ function Hero() {
       {/* Layer 1: Building background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+        style={{ backgroundImage: "url('/hero-bg.png')" }}
       />
       {/* Layer 2: Strong dark tint */}
       <div className="absolute inset-0 bg-black/75" />
