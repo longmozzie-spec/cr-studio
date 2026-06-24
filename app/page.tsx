@@ -137,9 +137,7 @@ function Hero() {
         </h1>
 
         <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto font-[family-name:var(--font-body)]">
-          Biến footage thô thành video marketing{" "}
-          <span className="text-[#D4A853]">chuyên nghiệp</span> – thu hút người xem,
-          truyền tải giá trị dự án và tối ưu hiệu quả quảng cáo bất động sản.
+          CR Studio - Studio của mọi doanh nghiệp
         </p>
 
         <div className="flex flex-wrap gap-4 mb-14 justify-center">
@@ -312,26 +310,6 @@ const team: TeamMember[] = [
       { num: "2", suffix: "Năm+", label: "Kinh nghiệm" },
       { num: "30", suffix: "+", label: "Dự án" },
       { num: "100", suffix: "%", label: "Tâm huyết" },
-    ],
-  },
-  {
-    name: "Tìa Phương Thanh",
-    role: "Video Editor · CR Studio",
-    avatar: "/team-4.png",
-    scale: 1.25,
-    objectPosition: "center 20%",
-    headingLine1: "Tư Duy Mới",
-    headingLine2: "Không Gian Mới",
-    tagline: "Tuổi Trẻ Không Ngừng Học Hỏi · Không Ngừng Phát Triển",
-    bio: (
-      <>
-        Với một Video Editor thuộc thế hệ mới, bàn dựng không chỉ là nơi cắt ghép những thước phim, mà là không gian để tôi không ngừng bứt phá giới hạn của chính mình. Bước vào nghề với <span className="text-[#D4A853] font-semibold">1 năm kinh nghiệm</span>, tôi mang theo ngọn lửa đam mê nguyên bản cùng châm ngôn sống: <span className="text-white font-medium italic">"Tuổi trẻ không ngừng học hỏi, không ngừng phát triển"</span>. Thị trường bất động sản luôn chuyển động và đòi hỏi những góc nhìn mới mẻ; chính vì vậy, tôi luôn chủ động cập nhật những xu hướng visual hiện đại nhất, từ nhịp dựng speed-ramp thời thượng đến tư duy màu sắc sang trọng, duy mỹ. Một năm qua là chuỗi ngày tôi lăn lộn cùng từng góc máy kiến trúc, học cách lắng nghe câu chuyện của từng ngôi nhà để biến những tư liệu thô thành những thước phim giới thiệu dự án đầy cảm xúc và lôi cuốn. Sự nhạy bén của tuổi trẻ kết hợp cùng tinh thần cầu tiến chính là cam kết của tôi để mang lại <span className="text-[#D4A853] font-semibold">làn gió mới</span>, nâng tầm giá trị cho các sản phẩm bất động sản của bạn.
-      </>
-    ),
-    stats: [
-      { num: "1", suffix: "Năm", label: "Kinh nghiệm" },
-      { num: "5", suffix: "+", label: "Dự án" },
-      { num: "100", suffix: "%", label: "Nhiệt huyết" },
     ],
   },
   {
@@ -660,16 +638,16 @@ const portfolioItems: PortfolioItem[] = [
   { title: "Bên Trong Penthouse 170 Tỷ – Dinh Thự Trên Không The Opera Thủ Thiêm",  youtubeId: "5CEuUzsYEzQ", isShort: false, thumb: "https://i.ytimg.com/vi/5CEuUzsYEzQ/maxresdefault.jpg" },
   { title: "Chạm Tay Vào Giấc Mơ Thượng Lưu Tại Loft House – Opera Thủ Thiêm",     youtubeId: "fsb9ifLCUDw", isShort: false, thumb: "https://i.ytimg.com/vi/fsb9ifLCUDw/maxresdefault.jpg" },
   { title: "The Crest Residence – Picturesque Beauty Of Thủ Thiêm",                youtubeId: "UCFzNSiJdys", isShort: false, thumb: "https://i.ytimg.com/vi/UCFzNSiJdys/maxresdefault.jpg" },
-  { title: "Thành Phố Điện Ảnh Đầu Tiên Đông Nam Á – Căn Hộ 4PN The Galleria",     youtubeId: "e8_HAZdBQP8", isShort: false, thumb: "https://i.ytimg.com/vi/e8_HAZdBQP8/maxresdefault.jpg" },
-  { title: "Khám Phá Tiện Ích Đẳng Cấp Tại Grand Marina Sài Gòn",                  youtubeId: "Uusk5XVzXAI", isShort: false, thumb: "https://i.ytimg.com/vi/Uusk5XVzXAI/maxresdefault.jpg" },
-  { title: "Căn Hộ Triệu Đô – Cuộc Sống Trong Mơ Tại Grand Marina Sài Gòn",        youtubeId: "cBYOQaPYnq0", isShort: false, thumb: "https://i.ytimg.com/vi/cBYOQaPYnq0/maxresdefault.jpg" },
-  { title: "Zeit River Thủ Thiêm – Khám Phá View Sài Gòn Cùng Trinh Lee",          youtubeId: "DsoCBasY9yI", isShort: false, thumb: "https://i.ytimg.com/vi/DsoCBasY9yI/maxresdefault.jpg" },
-  { title: "Duplex The River Thủ Thiêm – Resort Giữa Trung Tâm Sài Gòn",           youtubeId: "UlBtrIz31vg", isShort: false, thumb: "https://i.ytimg.com/vi/UlBtrIz31vg/maxresdefault.jpg" },
-  { title: "Opera Thủ Thiêm – Căn Hộ 4 Phòng Ngủ View Sông Sài Gòn",               youtubeId: "AhokN5S8VNc", isShort: false, thumb: "https://i.ytimg.com/vi/AhokN5S8VNc/maxresdefault.jpg" },
-  { title: "Loft House Nội Thất Indochine Tại Opera Residence – Metropole",        youtubeId: "imCOxBGLyN8", isShort: false, thumb: "https://i.ytimg.com/vi/imCOxBGLyN8/maxresdefault.jpg" },
-  { title: "Căn Hộ Sân Vườn Full Nội Thất Tại The River Thủ Thiêm – Kevin Khánh",  youtubeId: "bmYne_u1Snc", isShort: false, thumb: "https://i.ytimg.com/vi/bmYne_u1Snc/maxresdefault.jpg" },
-  { title: "55 Tỷ Cho Căn Lofthouse Nội Thất Chỉnh Chu Tại Metropole Thủ Thiêm",   youtubeId: "yQNlUBiJ-JY", isShort: false, thumb: "https://i.ytimg.com/vi/yQNlUBiJ-JY/maxresdefault.jpg" },
-  { title: "Căn Hộ 4 Phòng Ngủ Opera Residence – Metropole Thủ Thiêm",             youtubeId: "YiC-B-9oA7k", isShort: false, thumb: "https://i.ytimg.com/vi/YiC-B-9oA7k/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "LWnsh9UYxao", isShort: false, thumb: "https://i.ytimg.com/vi/LWnsh9UYxao/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "oLxr131HL6I", isShort: false, thumb: "https://i.ytimg.com/vi/oLxr131HL6I/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "h8swSeCIKtw", isShort: false, thumb: "https://i.ytimg.com/vi/h8swSeCIKtw/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "27NjDWufuE4", isShort: false, thumb: "https://i.ytimg.com/vi/27NjDWufuE4/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "oAhO2ZYs4XA", isShort: false, thumb: "https://i.ytimg.com/vi/oAhO2ZYs4XA/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "xdU4i6HQ5Wc", isShort: false, thumb: "https://i.ytimg.com/vi/xdU4i6HQ5Wc/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "d0vcAkPFH3Q", isShort: false, thumb: "https://i.ytimg.com/vi/d0vcAkPFH3Q/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "Dk7pJISdXtg", isShort: false, thumb: "https://i.ytimg.com/vi/Dk7pJISdXtg/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "IttmSAdv5KI", isShort: false, thumb: "https://i.ytimg.com/vi/IttmSAdv5KI/maxresdefault.jpg" },
+  { title: "Video BĐS",  youtubeId: "oJQSLny8IVI", isShort: false, thumb: "https://i.ytimg.com/vi/oJQSLny8IVI/maxresdefault.jpg" },
 ];
 
 function PortfolioCard({
@@ -813,8 +791,8 @@ const plans = [
   {
     name: "Gói Cơ Bản",
     sub: "Video Ngắn – Đăng Mạng Xã Hội",
-    price: "1.500.000 – 2.500.000đ",
-    unit: "/video",
+    price: "Liên hệ để làm việc",
+    unit: "",
     highlight: false,
     features: [
       "Dựng từ footage khách hàng cung cấp",
@@ -829,8 +807,8 @@ const plans = [
   {
     name: "Gói Chuyên Nghiệp",
     sub: "Video Bán Hàng – Chạy ADS",
-    price: "3.000.000 – 5.000.000đ",
-    unit: "/video",
+    price: "Liên hệ để làm việc",
+    unit: "",
     highlight: true,
     features: [
       "Dựng từ footage khách hàng cung cấp",
@@ -848,8 +826,8 @@ const plans = [
   {
     name: "Gói Cao Cấp",
     sub: "Video Dự Án – Hiệu Ứng Nâng Cao",
-    price: "6.000.000 – 10.000.000đ",
-    unit: "/video",
+    price: "Liên hệ để làm việc",
+    unit: "",
     highlight: false,
     features: [
       "Dựng từ footage khách hàng cung cấp",
