@@ -26,11 +26,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://crstudio.vn"),
   title: {
-    default: "CR Studio – Dựng Video Bất Động Sản Chuyên Nghiệp",
+    default: "CR Studio – Studio Của Mọi Doanh Nghiệp",
     template: "%s · CR Studio",
   },
   description:
-    "Dịch vụ dựng video bất động sản cinematic – Map Animation, Color Grading, Motion Graphics. Chuyên nghiệp – Ấn tượng – Hiệu quả bán hàng.",
+    "CR Studio – Studio của mọi doanh nghiệp. Dịch vụ dựng video cinematic chuyên nghiệp – Map Animation, Color Grading, Motion Graphics.",
   keywords: [
     "dựng video bất động sản",
     "map animation",
