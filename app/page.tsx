@@ -108,7 +108,7 @@ function Hero() {
         style={{ backgroundImage: "url('/hero-bg.png')" }}
       />
       {/* Layer 2: Strong dark tint */}
-      <div className="absolute inset-0 bg-black/75" />
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Layer 3: Subtle shader whisper – very low opacity */}
       <div className="absolute inset-0 mix-blend-screen opacity-15 pointer-events-none">
