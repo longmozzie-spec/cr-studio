@@ -806,17 +806,19 @@ function Process() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, i) => (
             <Reveal key={i} delay={(i % 3) * 80}>
-              <div className="relative glass-card rounded-2xl p-7 hover:border-[#D4A853]/40 transition-all duration-300 h-full">
-                <div className="absolute top-5 right-5 number-badge rounded-lg px-2.5 py-1">
+              <div className="relative glass-card rounded-2xl p-7 hover:border-[#D4A853]/50 hover:shadow-[0_4px_24px_rgba(212,168,83,0.12)] hover:-translate-y-0.5 transition-all duration-300 h-full group overflow-hidden">
+                {/* Gold accent line */}
+                <div className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#D4A853] to-[#F0C870] group-hover:w-full transition-all duration-500 ease-out" />
+                <div className="absolute top-5 right-5 number-badge rounded-lg px-2.5 py-1 group-hover:bg-[#D4A853]/20 transition-colors duration-300">
                   <span className="text-[#D4A853] font-black text-sm">{step.num}</span>
                 </div>
                 <div className="flex items-center gap-4 mb-4 pr-14">
-                  <div className="w-12 h-12 rounded-xl bg-[#D4A853]/10 flex items-center justify-center shrink-0">
-                    <step.icon size={22} className="text-[#D4A853]" />
+                  <div className="w-12 h-12 rounded-xl bg-[#D4A853]/10 flex items-center justify-center shrink-0 group-hover:bg-[#D4A853]/20 group-hover:scale-110 group-hover:shadow-[0_0_16px_rgba(212,168,83,0.25)] transition-all duration-300">
+                    <step.icon size={22} className="text-[#D4A853] transition-transform duration-300 group-hover:scale-110" />
                   </div>
-                  <h3 className="font-[family-name:var(--font-sub)] text-white font-bold text-lg leading-tight">{step.title}</h3>
+                  <h3 className="font-[family-name:var(--font-sub)] text-white font-bold text-lg leading-tight group-hover:text-[#F0C870] transition-colors duration-300">{step.title}</h3>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed font-[family-name:var(--font-body)]">{step.desc}</p>
+                <p className="text-gray-400 text-sm leading-relaxed font-[family-name:var(--font-body)] group-hover:text-gray-300 transition-colors duration-300">{step.desc}</p>
               </div>
             </Reveal>
           ))}
@@ -944,14 +946,14 @@ function Pricing() {
               </ul>
               <a
                 href="#contact"
-                className={`flex items-center justify-center gap-2 font-semibold py-3 rounded-full transition-all duration-200 cursor-pointer text-sm ${
+                className={`flex items-center justify-center gap-2 font-semibold py-3 rounded-full transition-all duration-300 cursor-pointer text-sm group/btn ${
                   plan.highlight
-                    ? "bg-[#D4A853] hover:bg-[#F0C870] text-black"
-                    : "border border-[#D4A853]/40 hover:border-[#D4A853] text-[#D4A853]"
+                    ? "bg-[#D4A853] hover:bg-[#F0C870] text-black hover:shadow-[0_4px_20px_rgba(212,168,83,0.4)] hover:-translate-y-0.5"
+                    : "border border-[#D4A853]/40 hover:border-[#D4A853] text-[#D4A853] hover:bg-[#D4A853]/10"
                 }`}
               >
                 Chọn Gói Này
-                <ChevronRight size={14} />
+                <ChevronRight size={14} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
               </a>
             </div>
           ))}
@@ -962,8 +964,8 @@ function Pricing() {
           <p className="text-gray-500 text-sm mb-6">(Tùy chọn thêm vào bất kỳ gói nào)</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {addons.map((a, i) => (
-              <div key={i} className="bg-white/[0.03] rounded-xl p-4 border border-white/5">
-                <p className="text-white text-sm font-medium mb-1.5">{a.name}</p>
+              <div key={i} className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-[#D4A853]/30 hover:bg-[#D4A853]/[0.04] hover:-translate-y-0.5 transition-all duration-300 group">
+                <p className="text-white text-sm font-medium mb-1.5 group-hover:text-[#F0C870] transition-colors duration-300">{a.name}</p>
                 <p className="text-[#D4A853] text-sm font-bold">{a.price}</p>
               </div>
             ))}
@@ -1021,13 +1023,13 @@ function Commitment() {
         />
         <div className="grid md:grid-cols-2 gap-6">
           {commitments.map((c, i) => (
-            <div key={i} className="glass-card rounded-2xl p-7 flex gap-5 hover:border-[#D4A853]/40 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/10 flex items-center justify-center shrink-0">
-                <c.icon size={24} className="text-[#D4A853]" />
+            <div key={i} className="glass-card rounded-2xl p-7 flex gap-5 hover:border-[#D4A853]/50 hover:shadow-[0_4px_24px_rgba(212,168,83,0.12)] hover:-translate-y-0.5 transition-all duration-300 group">
+              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/10 flex items-center justify-center shrink-0 group-hover:bg-[#D4A853]/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(212,168,83,0.3)] transition-all duration-300">
+                <c.icon size={24} className="text-[#D4A853] transition-transform duration-300 group-hover:scale-110" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg mb-2">{c.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{c.desc}</p>
+                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#F0C870] transition-colors duration-300">{c.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{c.desc}</p>
               </div>
             </div>
           ))}
@@ -1054,46 +1056,48 @@ function Contact() {
           <div className="space-y-4">
             <a
               href="tel:0945657611"
-              className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/50 transition-all duration-300 cursor-pointer group block"
+              className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/60 hover:shadow-[0_4px_24px_rgba(212,168,83,0.18)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group block"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/25 transition-colors">
-                <Phone size={22} className="text-[#D4A853]" />
+              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/30 group-hover:shadow-[0_0_20px_rgba(212,168,83,0.35)] transition-all duration-300 group-hover:scale-110">
+                <Phone size={22} className="text-[#D4A853] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <div>
+              <div className="flex-1">
                 <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Điện Thoại / Zalo</p>
-                <p className="text-white font-bold text-xl">0945 657 611</p>
+                <p className="text-white font-bold text-xl group-hover:text-[#F0C870] transition-colors duration-300">0945 657 611</p>
               </div>
+              <ArrowRight size={16} className="text-[#D4A853]/50 group-hover:text-[#D4A853] group-hover:translate-x-1 transition-all duration-300" />
             </a>
 
             <a
               href="mailto:Editornghiepdu93@gmail.com"
-              className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/50 transition-all duration-300 cursor-pointer group block"
+              className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/60 hover:shadow-[0_4px_24px_rgba(212,168,83,0.18)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group block"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/25 transition-colors">
-                <Mail size={22} className="text-[#D4A853]" />
+              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/30 group-hover:shadow-[0_0_20px_rgba(212,168,83,0.35)] transition-all duration-300 group-hover:scale-110">
+                <Mail size={22} className="text-[#D4A853] group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <div>
+              <div className="flex-1">
                 <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Email</p>
-                <p className="text-white font-bold text-xl">Editornghiepdu93@gmail.com</p>
+                <p className="text-white font-bold text-xl group-hover:text-[#F0C870] transition-colors duration-300">Editornghiepdu93@gmail.com</p>
               </div>
+              <ArrowRight size={16} className="text-[#D4A853]/50 group-hover:text-[#D4A853] group-hover:translate-x-1 transition-all duration-300" />
             </a>
 
             <a
               href="https://www.facebook.com/tho.duongminh.hanhtinhxanh"
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/50 transition-all duration-300 cursor-pointer group block"
+              className="glass-card rounded-2xl p-6 flex items-center gap-5 hover:border-[#D4A853]/60 hover:shadow-[0_4px_24px_rgba(212,168,83,0.18)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group block"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/25 transition-colors">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#D4A853]" xmlns="http://www.w3.org/2000/svg">
+              <div className="w-14 h-14 rounded-2xl bg-[#D4A853]/15 flex items-center justify-center group-hover:bg-[#D4A853]/30 group-hover:shadow-[0_0_20px_rgba(212,168,83,0.35)] transition-all duration-300 group-hover:scale-110">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#D4A853] group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg">
                   <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
                 </svg>
               </div>
               <div className="flex-1">
                 <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Facebook</p>
-                <p className="text-white font-bold">Nhắn Tin Qua Facebook</p>
+                <p className="text-white font-bold group-hover:text-[#F0C870] transition-colors duration-300">Nhắn Tin Qua Facebook</p>
               </div>
-              <ArrowRight size={16} className="text-[#D4A853] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} className="text-[#D4A853] group-hover:translate-x-1 transition-transform duration-300" />
             </a>
 
             <div className="glass-card rounded-2xl p-5">
