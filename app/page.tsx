@@ -635,14 +635,19 @@ function Services() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <Reveal key={i} delay={i * 80}>
-              <div className="glass-card rounded-2xl p-7 hover:border-[#D4A853]/40 transition-all duration-300 cursor-default group h-full">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#D4A853]/10 flex items-center justify-center shrink-0 group-hover:bg-[#D4A853]/20 transition-colors duration-300">
-                    <s.icon size={22} className="text-[#D4A853]" />
+              <div className="glass-card rounded-2xl p-7 hover:border-[#D4A853]/50 transition-all duration-300 cursor-default group h-full relative overflow-hidden">
+                {/* Gold accent line slides in from left on hover */}
+                <div className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#D4A853] to-[#F0C870] group-hover:w-full transition-all duration-500 ease-out" />
+                {/* Subtle bg glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(212,168,83,0.06)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="relative flex items-start gap-4 mb-4">
+                  <div className="relative w-12 h-12 rounded-xl bg-[#D4A853]/10 flex items-center justify-center shrink-0 group-hover:bg-[#D4A853]/20 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(212,168,83,0.3)]">
+                    <s.icon size={22} className="text-[#D4A853] transition-transform duration-300 group-hover:scale-110" />
                   </div>
-                  <h3 className="font-[family-name:var(--font-sub)] text-white font-bold text-lg leading-tight">{s.title}</h3>
+                  <h3 className="font-[family-name:var(--font-sub)] text-white font-bold text-lg leading-tight mt-1 group-hover:text-[#F0C870] transition-colors duration-300">{s.title}</h3>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed font-[family-name:var(--font-body)]">{s.desc}</p>
+                <p className="text-gray-400 text-sm leading-relaxed font-[family-name:var(--font-body)] group-hover:text-gray-300 transition-colors duration-300">{s.desc}</p>
               </div>
             </Reveal>
           ))}
@@ -690,7 +695,7 @@ function PortfolioCard({
       aria-label={`Phát video: ${item.title}`}
       onClick={onOpen}
       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onOpen(); } }}
-      className="group glass-card rounded-2xl overflow-hidden cursor-pointer hover:border-[#D4A853]/50 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A853]"
+      className="group glass-card rounded-2xl overflow-hidden cursor-pointer hover:border-[#D4A853]/60 hover:shadow-[0_8px_32px_rgba(212,168,83,0.15)] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A853]"
     >
       <div className="aspect-video bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
         <Image
@@ -698,17 +703,26 @@ function PortfolioCard({
           alt={item.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
 
-        {/* Overlay gradient for readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30 group-hover:from-black/50 transition-all duration-300 pointer-events-none" />
+        {/* Overlay – darkens more on hover to make play button pop */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10 group-hover:from-black/60 group-hover:via-black/40 group-hover:to-black/20 transition-all duration-500 pointer-events-none" />
 
-        {/* Play button – grows + gold fill on hover */}
+        {/* Play button */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm border-2 border-[#D4A853]/70 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-[#D4A853] group-hover:border-[#D4A853]">
+          <div className="relative w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm border-2 border-[#D4A853]/70 flex items-center justify-center transition-all duration-300 group-hover:scale-115 group-hover:bg-[#D4A853] group-hover:border-[#D4A853] group-hover:shadow-[0_0_30px_rgba(212,168,83,0.5)]">
+            {/* Ripple ring on hover */}
+            <div className="absolute inset-0 rounded-full border-2 border-[#D4A853]/0 group-hover:border-[#D4A853]/40 group-hover:scale-150 transition-all duration-500 pointer-events-none" />
             <Play size={22} className="text-[#D4A853] ml-1 transition-colors duration-300 group-hover:text-black" fill="currentColor" />
           </div>
+        </div>
+
+        {/* Title overlay slides up from bottom on hover */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+          <p className="text-white text-sm font-semibold font-[family-name:var(--font-sub)] line-clamp-2 drop-shadow-lg">
+            {item.title}
+          </p>
         </div>
       </div>
     </div>
