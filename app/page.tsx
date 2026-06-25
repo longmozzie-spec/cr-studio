@@ -353,6 +353,10 @@ const team: TeamMember[] = [
 function About() {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [bioExpanded, setBioExpanded] = useState(false);
+
+  // Reset expanded state when switching members
+  useEffect(() => { setBioExpanded(false); }, [index]);
   const total = team.length;
   const member = team[index];
 
@@ -501,9 +505,28 @@ function About() {
 
             <div className="w-16 h-px bg-gradient-to-r from-[#D4A853] to-transparent mb-8" />
 
-            <p className="font-[family-name:var(--font-body)] text-gray-300 text-base md:text-lg leading-[1.85] mb-10 max-w-2xl">
-              {member.bio}
-            </p>
+            <div className="relative mb-10 max-w-2xl">
+              <p
+                className="font-[family-name:var(--font-body)] text-gray-300 text-base md:text-lg leading-[1.85]"
+                style={!bioExpanded ? {
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                } : undefined}
+              >
+                {member.bio}
+              </p>
+              {!bioExpanded && (
+                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#080808] to-transparent pointer-events-none" />
+              )}
+              <button
+                onClick={() => setBioExpanded(e => !e)}
+                className="mt-3 flex items-center gap-1.5 text-[#D4A853] text-sm font-semibold hover:text-[#F0C870] transition-colors cursor-pointer"
+              >
+                {bioExpanded ? "Thu gọn ▲" : "Xem thêm ▼"}
+              </button>
+            </div>
 
             <div className="grid grid-cols-3 gap-4 max-w-xl pt-8 border-t border-[#D4A853]/15">
               {member.stats.map((s) => (
