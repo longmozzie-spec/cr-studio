@@ -13,6 +13,74 @@ import { Marquee } from "@/components/ui/marquee";
 import { GlobalMouseGlow } from "@/components/ui/global-mouse-glow";
 import { VideoModal } from "@/components/ui/video-modal";
 
+// ─── COUNT UP HOOK ────────────────────────────────────────────────────────────
+function useCountUp(target: number, duration = 1800) {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect(); } },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    let startTime: number;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [started, target, duration]);
+
+  return { count, ref };
+}
+
+// ─── STAT COUNTER ────────────────────────────────────────────────────────────
+function StatCounter({ num, suffix, label }: { num: number; suffix: string; label: string }) {
+  const { count, ref } = useCountUp(num);
+  return (
+    <div ref={ref} className="pt-6 text-center">
+      <div
+        className="text-2xl sm:text-3xl md:text-4xl font-black text-gold-gradient font-[family-name:var(--font-heading)]"
+        style={{ fontVariantNumeric: "lining-nums tabular-nums", lineHeight: 1 }}
+      >
+        {count}{suffix}
+      </div>
+      <div className="text-gray-400 text-xs sm:text-sm mt-2 font-[family-name:var(--font-body)] whitespace-nowrap">{label}</div>
+    </div>
+  );
+}
+
+// ─── BACK TO TOP ──────────────────────────────────────────────────────────────
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Về đầu trang"
+      className={`fixed bottom-8 right-6 z-40 w-11 h-11 rounded-full bg-[#D4A853] text-black flex items-center justify-center shadow-[0_4px_20px_rgba(212,168,83,0.4)] hover:bg-[#F0C870] hover:scale-110 hover:shadow-[0_4px_28px_rgba(212,168,83,0.6)] transition-all duration-300 cursor-pointer ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+    >
+      <ChevronRight size={18} className="-rotate-90" />
+    </button>
+  );
+}
+
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -62,10 +130,11 @@ function Navbar() {
 
         <a
           href="#contact"
-          className="hidden md:flex items-center gap-2 bg-[#D4A853] hover:bg-[#F0C870] text-black font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-200 cursor-pointer"
+          className="hidden md:flex items-center gap-2 bg-[#D4A853] hover:bg-[#F0C870] text-black font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300 cursor-pointer hover:shadow-[0_4px_16px_rgba(212,168,83,0.45)] hover:-translate-y-0.5 group"
         >
           <Phone size={14} />
           Tư Vấn Ngay
+          <ChevronRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
         </a>
 
         <button
@@ -144,35 +213,27 @@ function Hero() {
         <div className="flex flex-wrap gap-4 mb-14 justify-center">
           <a
             href="#pricing"
-            className="flex items-center gap-2 bg-[#D4A853] hover:bg-[#F0C870] text-black font-bold px-8 py-4 rounded-full transition-all duration-200 cursor-pointer font-[family-name:var(--font-sub)]"
+            className="flex items-center gap-2 bg-[#D4A853] hover:bg-[#F0C870] text-black font-bold px-8 py-4 rounded-full transition-all duration-300 cursor-pointer font-[family-name:var(--font-sub)] hover:shadow-[0_6px_24px_rgba(212,168,83,0.5)] hover:-translate-y-1 group"
           >
             Xem Bảng Giá
-            <ChevronRight size={16} />
+            <ChevronRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
           <a
             href="#portfolio"
-            className="flex items-center gap-2 border border-[#D4A853]/40 hover:border-[#D4A853] text-[#D4A853] font-semibold px-8 py-4 rounded-full transition-all duration-200 cursor-pointer font-[family-name:var(--font-sub)]"
+            className="flex items-center gap-2 border border-[#D4A853]/40 hover:border-[#D4A853] text-[#D4A853] font-semibold px-8 py-4 rounded-full transition-all duration-300 cursor-pointer font-[family-name:var(--font-sub)] hover:bg-[#D4A853]/10 hover:-translate-y-1 group"
           >
-            <Play size={16} />
+            <Play size={16} className="transition-transform duration-300 group-hover:scale-110" fill="currentColor" />
             Xem Portfolio
           </a>
         </div>
 
         <div className="flex gap-6 sm:gap-12 md:gap-20 justify-center pt-6 border-t border-[#D4A853]/15 max-w-2xl mx-auto">
           {[
-            { num: "200+", label: "Video đã dựng" },
-            { num: "5+", label: "Năm kinh nghiệm" },
-            { num: "98%", label: "Khách hài lòng" },
+            { num: 200, suffix: "+", label: "Video đã dựng" },
+            { num: 5,   suffix: "+", label: "Năm kinh nghiệm" },
+            { num: 98,  suffix: "%", label: "Khách hài lòng" },
           ].map((s) => (
-            <div key={s.label} className="pt-6 text-center">
-              <div
-                className="text-2xl sm:text-3xl md:text-4xl font-black text-gold-gradient font-[family-name:var(--font-heading)]"
-                style={{ fontVariantNumeric: "lining-nums tabular-nums", lineHeight: 1 }}
-              >
-                {s.num}
-              </div>
-              <div className="text-gray-400 text-xs sm:text-sm mt-2 font-[family-name:var(--font-body)] whitespace-nowrap">{s.label}</div>
-            </div>
+            <StatCounter key={s.label} {...s} />
           ))}
         </div>
 
@@ -211,11 +272,11 @@ function SectionHeader({
       <div className="relative z-10">
         <Reveal>
           <div className={`flex items-center gap-3 mb-5 ${isCenter ? "justify-center" : ""}`}>
-            <div className="w-10 h-px bg-[#D4A853]" />
+            <div className="w-0 h-px bg-[#D4A853] animate-[expandLine_0.8s_ease-out_0.2s_forwards]" />
             <span className="font-[family-name:var(--font-sub)] text-[#D4A853] text-xs uppercase tracking-[0.3em]">
               {eyebrow}
             </span>
-            <div className="w-10 h-px bg-[#D4A853]" />
+            <div className="w-0 h-px bg-[#D4A853] animate-[expandLine_0.8s_ease-out_0.2s_forwards]" />
           </div>
         </Reveal>
 
@@ -1284,6 +1345,7 @@ export default function Page() {
     <>
       <GlobalMouseGlow size={300} opacity={0.22} />
       <Navbar />
+      <BackToTop />
       <main className="min-h-screen bg-[#080808] overflow-x-hidden">
         <Hero />
         <About />

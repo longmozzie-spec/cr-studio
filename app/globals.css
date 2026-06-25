@@ -119,3 +119,8 @@ h2, h3, h4, h5, h6 {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.4), transparent);
 }
+
+@keyframes expandLine {
+  from { width: 0; }
+  to   { width: 40px; }
+}
