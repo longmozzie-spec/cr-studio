@@ -62,6 +62,24 @@ function StatCounter({ num, suffix, label }: { num: number; suffix: string; labe
   );
 }
 
+// ─── MESSENGER BUTTON ─────────────────────────────────────────────────────────
+function MessengerButton() {
+  return (
+    <a
+      href="https://m.me/101508565918457"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Nhắn tin qua Messenger"
+      className="fixed bottom-8 right-20 z-40 w-11 h-11 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,132,255,0.4)] hover:scale-110 hover:shadow-[0_4px_28px_rgba(0,132,255,0.6)] transition-all duration-300 cursor-pointer overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #0084ff 0%, #a033ff 100%)" }}
+    >
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.145 2 11.259c0 2.821 1.323 5.338 3.405 7.044V22l3.116-1.708A10.85 10.85 0 0 0 12 20.517c5.523 0 10-4.144 10-9.258C22 6.145 17.523 2 12 2Zm1.008 12.465-2.548-2.718-4.976 2.718 5.476-5.812 2.612 2.718 4.911-2.718-5.475 5.812Z"/>
+      </svg>
+    </a>
+  );
+}
+
 // ─── BACK TO TOP ──────────────────────────────────────────────────────────────
 function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -1345,6 +1363,7 @@ export default function Page() {
     <>
       <GlobalMouseGlow size={300} opacity={0.22} />
       <Navbar />
+      <MessengerButton />
       <BackToTop />
       <main className="min-h-screen bg-[#080808] overflow-x-hidden">
         <Hero />
