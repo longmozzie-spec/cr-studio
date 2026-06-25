@@ -85,11 +85,84 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://crstudio.vn/#organization",
+        "name": "CR Studio",
+        "url": "https://crstudio.vn",
+        "logo": "https://crstudio.vn/logo.png",
+        "description": "Studio chuyên dựng video cinematic, Color Grading, Motion Graphics, Map Animation cho doanh nghiệp tại Việt Nam.",
+        "telephone": "+84945657611",
+        "email": "Editornghiepdu93@gmail.com",
+        "sameAs": ["https://www.facebook.com/tho.duongminh.hanhtinhxanh"],
+        "areaServed": { "@type": "Country", "name": "Vietnam" },
+        "founder": {
+          "@type": "Person",
+          "name": "Dương Minh Thơ",
+          "jobTitle": "Founder & Video Editor",
+          "description": "Hơn 10 năm kinh nghiệm hậu kỳ video bất động sản cinematic tại Việt Nam.",
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+84945657611",
+          "contactType": "customer service",
+          "availableLanguage": "Vietnamese",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "08:00",
+            "closes": "21:00",
+          },
+        },
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://crstudio.vn/#localbusiness",
+        "name": "CR Studio",
+        "url": "https://crstudio.vn",
+        "image": "https://crstudio.vn/hero-bg.jpeg",
+        "telephone": "+84945657611",
+        "email": "Editornghiepdu93@gmail.com",
+        "priceRange": "$$",
+        "currenciesAccepted": "VND",
+        "paymentAccepted": "Cash, Bank Transfer",
+        "areaServed": { "@type": "Country", "name": "Vietnam" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Dịch Vụ Dựng Video",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dựng Video Chuyên Nghiệp", "description": "Cắt dựng từ footage theo nhịp phim, kịch bản storytelling." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Color Grading Cinematic", "description": "Chỉnh màu nâng cao tạo cảm xúc thị giác." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motion Graphics & Effects", "description": "Text animation, chuyển cảnh, map animation." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Map Animation", "description": "Animation bản đồ vị trí dự án chuyên nghiệp." } },
+          ],
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://crstudio.vn/#website",
+        "url": "https://crstudio.vn",
+        "name": "CR Studio",
+        "publisher": { "@id": "https://crstudio.vn/#organization" },
+        "inLanguage": "vi-VN",
+      },
+    ],
+  };
+
   return (
     <html
       lang="vi"
       className={`${playfair.variable} ${montserrat.variable} ${manrope.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
