@@ -51,7 +51,7 @@ export const metadata: Metadata = {
       "Chuyên Map Animation & dựng video bất động sản cinematic. Biến footage thô thành video marketing thu hút – tối ưu hiệu quả quảng cáo.",
     images: [
       {
-        url: "/hero-bg.png",
+        url: "/hero-bg.jpeg",
         width: 1200,
         height: 630,
         alt: "CR Studio – Dựng Video Bất Động Sản",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "CR Studio – Dựng Video Bất Động Sản Chuyên Nghiệp",
     description:
       "Map Animation & dựng video BĐS cinematic. Chuyên nghiệp – Ấn tượng – Hiệu quả.",
-    images: ["/hero-bg.png"],
+    images: ["/hero-bg.jpeg"],
   },
   robots: {
     index: true,
