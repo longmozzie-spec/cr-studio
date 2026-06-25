@@ -387,8 +387,8 @@ function About() {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Soft gold ambient glow */}
-      <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full bg-[#D4A853]/[0.04] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-[#D4A853]/[0.03] blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-0 -translate-x-1/2 w-96 h-96 rounded-full bg-[#D4A853]/[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-64 h-64 rounded-full bg-[#D4A853]/[0.03] blur-[100px] pointer-events-none" />
 
 
       <div className="max-w-7xl mx-auto relative">
@@ -1239,7 +1239,7 @@ export default function Page() {
     <>
       <GlobalMouseGlow size={300} opacity={0.22} />
       <Navbar />
-      <main className="min-h-screen bg-[#080808]">
+      <main className="min-h-screen bg-[#080808] overflow-x-hidden">
         <Hero />
         <About />
         <Marquee />
