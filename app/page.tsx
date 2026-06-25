@@ -6,6 +6,7 @@ import {
   Film, Layers, Palette, Music, Video, Star, ArrowRight,
   MapPin, Clock, Shield, Award, Users, Zap, Eye, MessageSquare
 } from "lucide-react";
+import Image from "next/image";
 import { ShaderAnimation } from "@/components/ui/shader-animation";
 import { Reveal } from "@/components/ui/reveal";
 import { Marquee } from "@/components/ui/marquee";
@@ -44,7 +45,7 @@ function Navbar() {
       <nav aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3" aria-label="CR Studio homepage">
-          <img src="/logo.png" alt="CR Studio logo" className="h-10 w-auto" />
+          <Image src="/logo.png" alt="CR Studio logo" width={120} height={40} className="h-10 w-auto" priority />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -451,10 +452,12 @@ function About() {
                 <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-[#D4A853]/60" />
 
                 <div className="relative w-full h-full overflow-hidden bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a]">
-                  <img
+                  <Image
                     src={member.avatar}
                     alt={`${member.name} – ${member.role}`}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 448px"
+                    className="object-cover"
                     style={{
                       objectPosition: member.objectPosition ?? "center top",
                       transform: member.scale ? `scale(${member.scale})` : undefined,
@@ -690,12 +693,12 @@ function PortfolioCard({
       className="group glass-card rounded-2xl overflow-hidden cursor-pointer hover:border-[#D4A853]/50 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A853]"
     >
       <div className="aspect-video bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-        <img
+        <Image
           src={item.thumb}
           alt={item.title}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
         {/* Overlay gradient for readability */}
@@ -1092,11 +1095,12 @@ function Contact() {
             <p className="text-[#D4A853] text-sm uppercase tracking-wider font-medium mb-5">Quét Mã Zalo / Chat Ngay</p>
 
             <div className="w-52 h-52 bg-white rounded-2xl p-3 mb-5 flex items-center justify-center">
-              <img
+              <Image
                 src="/qr-zalo.jpg"
                 alt="Mã QR Zalo CR Studio – 0945 657 611"
+                width={184}
+                height={184}
                 className="w-full h-full object-contain rounded-lg"
-                loading="lazy"
               />
             </div>
 
@@ -1160,7 +1164,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* Brand */}
         <div className="lg:col-span-1">
-          <img src="/logo.png" alt="CR Studio logo" className="h-12 w-auto mb-5" />
+          <Image src="/logo.png" alt="CR Studio logo" width={120} height={48} className="h-12 w-auto mb-5" />
           <p className="text-gray-400 text-sm leading-relaxed font-[family-name:var(--font-body)] mb-5">
             Chuyên dựng video bất động sản cinematic. 10 năm kinh nghiệm cùng hơn 200 dự án đã hoàn thành.
           </p>
